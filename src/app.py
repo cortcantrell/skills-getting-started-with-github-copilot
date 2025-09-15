@@ -111,13 +111,6 @@ def get_activities():
 
 
 @app.post("/activities/{activity_name}/signup")
-
-import re
-
-def is_valid_email(email: str) -> bool:
-    # Simple regex for email validation
-    return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email) is not None
-
 def signup_for_activity(activity_name: str, email: str):
     """Sign up a student for an activity"""
     # Validate activity exists
@@ -142,3 +135,7 @@ def signup_for_activity(activity_name: str, email: str):
     # Register participant
     participants.append(email)
     return {"message": f"Signed up {email} for {activity_name}"}
+
+def is_valid_email(email: str) -> bool:
+    # Simple regex for email validation
+    return re.match(r"^[\w\.-]+@[\w\.-]+\.\w+$", email) is not None
